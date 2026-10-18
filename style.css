@@ -1,0 +1,1216 @@
+
+/* ========================================
+   CUBE TIMER 3x3 — PREMIUM EDITION
+   Responsive • Android • Tablet • Landscape
+======================================== */
+
+:root {
+    color-scheme: dark;
+
+    --bg: #090c10;
+    --surface: #11161c;
+    --surface-light: #171e25;
+    --surface-hover: #202932;
+
+    --border: #29333d;
+    --border-light: #37434f;
+
+    --green: #72ffad;
+    --green-soft: rgba(114, 255, 173, 0.12);
+
+    --white: #f5f7fa;
+    --muted: #8b97a4;
+    --yellow: #ffd166;
+    --red: #ff8585;
+
+    --radius-sm: 9px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+
+    --transition: 160ms ease;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+
+    font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
+
+    overflow: hidden;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    overscroll-behavior: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+}
+
+
+/* ========================================
+   MAIN APPLICATION
+======================================== */
+
+.timer-app {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding:
+        max(10px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(10px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
+
+    isolation: isolate;
+}
+
+
+/* ========================================
+   TOP BAR
+======================================== */
+
+.top-bar {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: clamp(14px, 2.5vw, 19px);
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.logo span {
+    color: var(--green);
+    font-weight: 500;
+}
+
+
+/* ========================================
+   TOP STATISTICS
+======================================== */
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 7px;
+    min-width: 0;
+}
+
+.stat {
+    min-width: 61px;
+    padding: 6px 9px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    background: var(--surface);
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.stat span:last-child {
+    margin-top: 3px;
+
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 800;
+
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.cube {
+    padding: 7px 11px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    background: var(--surface);
+    color: #c6d0da;
+
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   SCRAMBLE DISPLAY
+======================================== */
+
+.scramble {
+    width: 100%;
+    min-height: 44px;
+    flex-shrink: 0;
+
+    margin-top: 9px;
+    padding: 9px 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #222c35;
+    border-radius: var(--radius-md);
+
+    background: linear-gradient(
+        135deg,
+        #141a20,
+        #0e1217
+    );
+
+    color: #dbe3eb;
+
+    text-align: center;
+    overflow-wrap: anywhere;
+
+    font-size: clamp(10px, 1.7vw, 13px);
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   TIMER AREA
+======================================== */
+
+.timer-area {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(10px, 2.5vw, 28px);
+
+    padding: 12px 0;
+}
+
+.timer-center {
+    flex: 1;
+    min-width: 0;
+    max-width: 760px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+#timer {
+    max-width: 100%;
+
+    color: var(--white);
+
+    font-size: clamp(48px, 17vh, 150px);
+    font-weight: 300;
+
+    line-height: 1.08;
+    letter-spacing: -0.065em;
+
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+
+    white-space: nowrap;
+
+    transition:
+        color 120ms ease,
+        transform 120ms ease;
+}
+
+#status {
+    margin-top: 14px;
+
+    color: var(--green);
+
+    font-size: clamp(9px, 1.5vw, 12px);
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    line-height: 1.5;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   HAND BUTTONS
+======================================== */
+
+.hand-button {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: clamp(100px, 18vw, 210px);
+    height: clamp(100px, 18vw, 210px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--border-light);
+    border-radius: clamp(20px, 3vw, 30px);
+
+    background: linear-gradient(
+        145deg,
+        #1b232b 0%,
+        #11161b 55%,
+        #0d1115 100%
+    );
+
+    color: #bdc7d1;
+
+    font-size: clamp(10px, 1.5vw, 13px);
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    outline: none;
+
+    touch-action: none;
+    -webkit-touch-callout: none;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+    transition:
+        transform 120ms ease,
+        border-color 120ms ease,
+        background 120ms ease,
+        color 120ms ease,
+        box-shadow 120ms ease;
+}
+
+.hand-button::before {
+    content: "";
+
+    position: absolute;
+    inset: 8px;
+
+    border: 1px solid #303a44;
+    border-radius: inherit;
+
+    pointer-events: none;
+}
+
+.hand-button::after {
+    content: "HOLD";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 16px;
+
+    color: #65717d;
+
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+
+    pointer-events: none;
+}
+
+.hand-button.pressed {
+    transform: scale(0.95);
+
+    border-color: var(--green);
+
+    background: linear-gradient(
+        145deg,
+        #203b2c,
+        #111d16
+    );
+
+    color: var(--green);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.35),
+        inset 0 0 26px var(--green-soft);
+}
+
+.hand-button.pressed::before {
+    border-color: rgba(114, 255, 173, 0.35);
+}
+
+.hand-button.ready {
+    border-color: var(--green);
+
+    background: linear-gradient(
+        145deg,
+        #1c3024,
+        #101914
+    );
+
+    color: var(--green);
+
+    box-shadow:
+        0 0 20px var(--green-soft),
+        inset 0 0 25px rgba(114, 255, 173, 0.045);
+}
+
+
+/* ========================================
+   TIMER STATES
+======================================== */
+
+.timer-ready #timer {
+    color: var(--green);
+}
+
+.timer-running #timer {
+    color: var(--white);
+}
+
+.timer-stopped #timer {
+    color: var(--yellow);
+}
+
+.timer-stopped #status {
+    color: var(--yellow);
+}
+
+.timer-running {
+    cursor: pointer;
+}
+
+.timer-running.stop-pressed #timer {
+    color: var(--yellow);
+    transform: scale(0.985);
+}
+
+.timer-running.stop-pressed #status {
+    color: var(--yellow);
+}
+
+.timer-running.stop-pressed .hand-button {
+    border-color: var(--yellow);
+}
+
+
+/* ========================================
+   BOTTOM BAR — UPDATED POSITIONS
+   HISTORY LEFT • SCRAMBLE CENTER • RESET RIGHT
+======================================== */
+
+.bottom-bar {
+    width: 100%;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.bottom-bar button {
+    min-width: 0;
+    min-height: 46px;
+    height: 46px;
+
+    flex: 1 1 0;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: linear-gradient(
+        145deg,
+        #171d23,
+        #11161b
+    );
+
+    color: #dce4ec;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+    outline: none;
+
+    transition:
+        transform 120ms ease,
+        background 120ms ease,
+        border-color 120ms ease;
+}
+
+/* History — LEFT */
+#historyBtn {
+    order: 1;
+    margin-right: auto;
+}
+
+/* Scramble — CENTER */
+#scrambleBtn {
+    order: 2;
+
+    color: var(--green);
+    border-color: #315b42;
+}
+
+/* Reset — RIGHT */
+#resetBtn {
+    order: 3;
+    margin-left: auto;
+}
+
+.bottom-bar button:active {
+    transform: scale(0.96);
+    background: var(--surface-hover);
+}
+
+#scrambleBtn:active {
+    background: #17271e;
+}
+
+
+/* ========================================
+   HISTORY PANEL
+======================================== */
+
+.history-panel {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(92vw, 540px);
+    height: min(82vh, 540px);
+    height: min(82dvh, 540px);
+
+    transform: translate(-50%, -50%) scale(0.97);
+
+    display: none;
+    flex-direction: column;
+
+    padding: clamp(14px, 3vw, 22px);
+
+    background: linear-gradient(
+        145deg,
+        #141a21,
+        #0e1217
+    );
+
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.72),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    z-index: 1000;
+
+    overflow: hidden;
+    overscroll-behavior: contain;
+}
+
+.history-panel.open {
+    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid #29323b;
+    flex-shrink: 0;
+}
+
+.history-header h2 {
+    color: var(--white);
+
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 900;
+    letter-spacing: 0.8px;
+}
+
+#closeHistory {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: var(--surface-light);
+    color: #c6d0da;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.history-list {
+    flex: 1;
+    min-height: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    margin-top: 13px;
+    padding-right: 4px;
+
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #3b4753 transparent;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.history-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: #3b4753;
+    border-radius: 10px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+    padding: 13px;
+
+    margin-bottom: 8px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid #29323b;
+    border-radius: 12px;
+}
+
+.delete-solve {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #603b3b;
+    border-radius: 9px;
+    background: #1b1417;
+    color: var(--red);
+
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 120ms ease, transform 120ms ease;
+}
+
+.delete-solve:hover {
+    background: #29191d;
+}
+
+.delete-solve:active {
+    transform: scale(0.94);
+}
+
+.history-number {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.history-time {
+    flex: 1;
+    min-width: 0;
+
+    color: var(--green);
+
+    font-size: clamp(15px, 3vw, 19px);
+    font-weight: 800;
+
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.history-scramble {
+    max-width: 55%;
+
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.empty-history {
+    padding: 40px 10px;
+
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+.clear-history {
+    width: 100%;
+    min-height: 48px;
+    flex-shrink: 0;
+
+    margin-top: 12px;
+    padding: 10px;
+
+    border: 1px solid #603b3b;
+    border-radius: 12px;
+
+    background: #1b1417;
+    color: var(--red);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 120ms ease,
+        background 120ms ease;
+}
+
+.clear-history:active {
+    transform: scale(0.98);
+    background: #29191d;
+}
+
+
+/* ========================================
+   TABLET / SMALL LAPTOP
+======================================== */
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    .timer-area {
+        gap: 18px;
+    }
+
+    .hand-button {
+        width: clamp(115px, 17vw, 175px);
+        height: clamp(115px, 17vw, 175px);
+    }
+
+    #timer {
+        font-size: clamp(60px, 15vh, 125px);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+    .timer-app {
+        padding-left: max(8px, env(safe-area-inset-left));
+        padding-right: max(8px, env(safe-area-inset-right));
+    }
+
+    .top-bar {
+        height: 36px;
+        min-height: 36px;
+        gap: 6px;
+    }
+
+    .logo {
+        font-size: clamp(12px, 3.2vw, 16px);
+        letter-spacing: 1px;
+    }
+
+    .stats {
+        gap: 4px;
+    }
+
+    .stat {
+        min-width: 47px;
+        padding: 5px 6px;
+    }
+
+    .stat-label {
+        font-size: 6px;
+        letter-spacing: 0.8px;
+    }
+
+    .stat span:last-child {
+        font-size: 10px;
+    }
+
+    .cube {
+        padding: 6px 7px;
+        font-size: 10px;
+    }
+
+    .scramble {
+        min-height: 38px;
+        margin-top: 7px;
+        padding: 7px 9px;
+
+        font-size: 10px;
+        letter-spacing: 0.2px;
+    }
+
+    .timer-area {
+        gap: 7px;
+        padding: 8px 0;
+    }
+
+    .hand-button {
+        width: clamp(76px, 26vw, 120px);
+        height: clamp(95px, 26vw, 120px);
+
+        border-radius: 20px;
+
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .hand-button::before {
+        inset: 6px;
+    }
+
+    .hand-button::after {
+        bottom: 12px;
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    #timer {
+        font-size: clamp(38px, 11.5vw, 72px);
+        letter-spacing: -0.06em;
+    }
+
+    #status {
+        margin-top: 10px;
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    /* Updated bottom button arrangement */
+    .bottom-bar {
+        justify-content: space-between;
+        gap: 6px;
+        padding-top: 6px;
+    }
+
+    .bottom-bar button {
+        flex: 1 1 0;
+
+        width: 0;
+        max-width: none;
+        min-height: 43px;
+        height: 43px;
+
+        padding: 0 5px;
+        border-radius: 10px;
+
+        font-size: 10px;
+    }
+
+    #historyBtn {
+        order: 1;
+    }
+
+    #scrambleBtn {
+        order: 2;
+    }
+
+    #resetBtn {
+        order: 3;
+    }
+
+    .history-panel {
+        width: 94vw;
+        width: min(94vw, 540px);
+
+        height: 82vh;
+        height: 82dvh;
+
+        padding: 14px;
+        border-radius: 18px;
+    }
+
+    .history-scramble {
+        display: none;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL PHONES
+======================================== */
+
+@media (max-width: 360px) {
+    .logo {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+
+    .stats {
+        gap: 3px;
+    }
+
+    .stat {
+        min-width: 40px;
+        padding: 4px;
+    }
+
+    .stat-label {
+        font-size: 5px;
+        letter-spacing: 0.4px;
+    }
+
+    .stat span:last-child {
+        font-size: 9px;
+    }
+
+    .cube {
+        padding: 5px;
+        font-size: 9px;
+    }
+
+    .timer-area {
+        gap: 5px;
+    }
+
+    .hand-button {
+        width: 76px;
+        height: 95px;
+        border-radius: 16px;
+    }
+
+    .hand-button::after {
+        bottom: 10px;
+    }
+
+    #timer {
+        font-size: clamp(32px, 10vw, 48px);
+        letter-spacing: -0.07em;
+    }
+
+    #status {
+        font-size: 8px;
+        letter-spacing: 1.3px;
+    }
+
+    .bottom-bar button {
+        padding: 0 4px;
+        font-size: 9px;
+    }
+}
+
+
+/* ========================================
+   LANDSCAPE MODE
+======================================== */
+
+@media (orientation: landscape) {
+    .timer-app {
+        padding-top: max(6px, env(safe-area-inset-top));
+        padding-bottom: max(6px, env(safe-area-inset-bottom));
+    }
+
+    .top-bar {
+        height: 32px;
+        min-height: 32px;
+    }
+
+    .scramble {
+        min-height: 34px;
+        margin-top: 4px;
+        padding: 5px 10px;
+    }
+
+    .timer-area {
+        gap: clamp(12px, 3vw, 42px);
+        padding: 5px 0;
+    }
+
+    .hand-button {
+        width: clamp(95px, 20vh, 190px);
+        height: clamp(95px, 20vh, 190px);
+    }
+
+    #timer {
+        font-size: clamp(48px, 18vh, 130px);
+    }
+
+    #status {
+        margin-top: 7px;
+    }
+
+    .bottom-bar {
+        padding-top: 4px;
+    }
+
+    .bottom-bar button {
+        height: 38px;
+        min-height: 38px;
+    }
+}
+
+
+/* ========================================
+   SHORT LANDSCAPE SCREENS
+======================================== */
+
+@media (orientation: landscape) and (max-height: 450px) {
+    .timer-app {
+        padding: 4px 12px;
+    }
+
+    .top-bar {
+        height: 27px;
+        min-height: 27px;
+    }
+
+    .logo {
+        font-size: 12px;
+    }
+
+    .stat {
+        min-width: 43px;
+        padding: 2px 5px;
+    }
+
+    .stat-label {
+        font-size: 5px;
+    }
+
+    .stat span:last-child {
+        margin-top: 1px;
+        font-size: 8px;
+    }
+
+    .cube {
+        padding: 3px 7px;
+        font-size: 9px;
+    }
+
+    .scramble {
+        min-height: 27px;
+        margin-top: 3px;
+        padding: 3px 8px;
+
+        font-size: 9px;
+        line-height: 1.3;
+    }
+
+    .timer-area {
+        gap: 12px;
+        padding: 3px 0;
+    }
+
+    .hand-button {
+        width: clamp(78px, 22vh, 100px);
+        height: clamp(78px, 22vh, 100px);
+        border-radius: 17px;
+    }
+
+    .hand-button::before {
+        inset: 5px;
+    }
+
+    .hand-button::after {
+        bottom: 9px;
+        font-size: 6px;
+    }
+
+    #timer {
+        font-size: clamp(42px, 16vh, 78px);
+    }
+
+    #status {
+        margin-top: 4px;
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .bottom-bar {
+        padding-top: 3px;
+    }
+
+    .bottom-bar button {
+        height: 30px;
+        min-height: 30px;
+
+        padding: 0 12px;
+
+        font-size: 9px;
+        border-radius: 8px;
+    }
+
+    .history-panel {
+        height: 90vh;
+        height: 90dvh;
+        padding: 10px;
+    }
+
+    .history-header {
+        padding-bottom: 7px;
+    }
+
+    .history-header h2 {
+        font-size: 15px;
+    }
+
+    #closeHistory {
+        width: 30px;
+        height: 30px;
+    }
+
+    .history-list {
+        margin-top: 7px;
+    }
+
+    .history-item {
+        padding: 8px;
+        margin-bottom: 5px;
+    }
+
+    .clear-history {
+        min-height: 34px;
+        margin-top: 7px;
+    }
+}
+
+
+/* ========================================
+   DESKTOP HOVER EFFECTS
+======================================== */
+
+@media (hover: hover) and (pointer: fine) {
+    .hand-button:hover {
+        border-color: #52616e;
+        color: var(--white);
+    }
+
+    .hand-button.ready:hover {
+        border-color: var(--green);
+        color: var(--green);
+    }
+
+    .bottom-bar button:hover {
+        border-color: #465462;
+        background: var(--surface-hover);
+    }
+
+    #scrambleBtn:hover {
+        border-color: var(--green);
+        background: #17271e;
+    }
+
+    #closeHistory:hover {
+        border-color: #465462;
+        background: var(--surface-hover);
+    }
+
+    .history-item:hover {
+        background: rgba(255, 255, 255, 0.045);
+        border-color: #394653;
+    }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Psycho Squad</title>
+
+  <style>
+    :root {
+      --primary: #00ff88;
+      --dark: #0a0a0a;
+      --text: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .profile-container {
+      background: rgba(26, 26, 26, 0.95);
+      border-radius: 24px;
+      padding: 50px 35px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      margin: 0 auto 20px;
+      object-fit: cover;
+      box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+    }
+
+    h1 {
+      color: white;
+      font-size: 2.1rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .user-info {
+      margin: 25px 0 35px;
+    }
+
+    .user-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .user-email {
+      color: #aaa;
+      font-size: 1rem;
+      word-break: break-all;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 8px 6px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.02rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: black;
+    }
+
+    .btn-primary:hover {
+      background: #00ffaa;
+      transform: translateY(-3px);
+    }
+
+    .btn-danger {
+      background: #ff4444;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #ff6666;
+      transform: translateY(-3px);
+    }
+
+    .status {
+      margin-top: 30px;
+      padding: 12px 20px;
+      background: rgba(0, 255, 136, 0.1);
+      border-radius: 12px;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <img src="images/Logo.jpg" alt="Psycho Squad Logo" class="logo">
+    
+    <h1>Your Profile</h1>
+    <p class="subtitle">Welcome to Psycho Squad</p>
+
+    <img id="user-pic" class="profile-pic" src="" alt="Your Profile Picture">
+
+    <div class="user-info">
+      <div id="user-name" class="user-name"></div>
+      <div id="user-email" class="user-email"></div>
+    </div>
+
+    <p style="opacity: 0.85; margin-bottom: 25px;">
+      You are signed in as a member of the Psycho Squad community.
+    </p>
+
+    <div>
+      <a href="squadlogo.html" class="btn btn-primary">Back to Community</a>
+      <button id="signout-btn" class="btn btn-danger">Sign Out</button>
+    </div>
+
+    <div class="status">
+      ✅ Account Active • Joined via Google
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Psycho Squad • Built on mobile phone
+  </footer>
+
+  <script>
+    const name = localStorage.getItem("userName");
+    const email = localStorage.getItem("userEmail");
+    const pic = localStorage.getItem("userPic");
+
+    if (name && email && pic) {
+      document.getElementById("user-name").textContent = name;
+      document.getElementById("user-email").textContent = email;
+      document.getElementById("user-pic").src = pic;
+    } else {
+      // Redirect if not logged in
+      window.location.href = "squadlogo.html";
+    }
+
+    // Sign Out functionality
+    document.getElementById("signout-btn").addEventListener("click", () => {
+      if (confirm("Are you sure you want to sign out?")) {
+        localStorage.clear();
+        alert("👋 You have been signed out successfully.");
+        window.location.href = "squadlogo.html";
+      }
+    });
+  </script>
+
+</body>
+</html>

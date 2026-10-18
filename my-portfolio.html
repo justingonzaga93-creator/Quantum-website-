@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin Portfolio</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #0f172a; color: white; overflow-x: hidden; }
+
+    /* NAVBAR */
+    nav {
+      background: #020617; padding: 15px; display: flex; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    nav a { color: white; text-decoration: none; margin: 0 10px; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: #38bdf8; }
+
+    /* HERO */
+    header {
+      text-align: center; padding: 60px 20px;
+      background: linear-gradient(135deg, #2563eb, #9333ea);
+    }
+    header img {
+      width: 150px; height: 150px; border-radius: 50%; border: 4px solid #38bdf8;
+      object-fit: cover; margin-bottom: 20px; box-shadow: 0 0 20px #38bdf8;
+      opacity: 0; transform: scale(0.8); animation: fadeInScale 1s forwards 0.5s;
+    }
+    @keyframes fadeInScale { to { opacity: 1; transform: scale(1); } }
+    header h1 { font-size: 32px; margin-bottom: 10px; opacity: 0; animation: fadeIn 1s forwards 1s; }
+    header p { font-size: 18px; color: #cbd5e1; height: 24px; opacity: 0; animation: fadeIn 1s forwards 1.5s; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* SECTIONS */
+    section { padding: 50px 20px; text-align: center; }
+    h2 { margin-bottom: 20px; font-size: 28px; color: #38bdf8; }
+
+    /* ABOUT FOOTER */
+    .about-footer {
+      margin-top: 20px; color: #94a3b8; opacity: 0; transform: translateY(20px);
+      transition: all 1s ease-in-out;
+    }
+    .about-footer.show { opacity: 1; transform: translateY(0); }
+    .about-footer h3 { font-size: 18px; margin-bottom: 5px; }
+    .about-footer p { font-size: 14px; font-style: italic; }
+
+    /* SKILLS */
+    .skills { max-width: 400px; margin: auto; text-align: left; }
+    .bar { background: #1e293b; height: 10px; border-radius: 5px; margin-bottom: 15px; overflow: hidden; }
+    .fill { height: 100%; background: #38bdf8; border-radius: 5px; width: 0; transition: width 1.5s ease-in-out; }
+
+    /* PROJECTS */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .card {
+      background: #020617; padding: 20px; border-radius: 10px;
+      transition: 0.3s; opacity: 0; transform: translateY(20px);
+    }
+    .card.show { opacity: 1; transform: translateY(0); }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 0 20px #38bdf8; }
+    .btn { display: inline-block; margin-top: 10px; padding: 8px 15px; background: #38bdf8; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+
+    /* CONTACT */
+    #contact { background:#111827; }
+    form { max-width:400px; margin:auto; text-align:left; }
+    label { color:#cbd5e1; font-size:14px; }
+    input, textarea {
+      width: 100%; padding:10px; margin:5px 0 15px 0; border:none; border-radius:5px;
+      background:#1e293b; color:white; font-size:14px; resize:none;
+    }
+    input:focus, textarea:focus { outline:2px solid #38bdf8; }
+
+    #contact button {
+      padding:12px 25px; background:#38bdf8; color:#0f172a; border:none; border-radius:8px;
+      font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s;
+    }
+    #contact button:hover { background:#2563eb; color:white; transform: translateY(-3px); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 20px; background: #020617; margin-top: 20px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>L3ARN Portfolio</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <img src="images/L3ARN.jpg" alt="Justin Profile">
+    <h1>Justin Gonzaga</h1>
+    <p id="typing"></p>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>About Me</h2>
+    <p>I'm still studying and learning advance for HTML,CSS,JS</p>
+    <div class="about-footer" id="aboutFooter">
+      <h3>Design by AI</h3>
+      <p>I'm still learning for CSS😁</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <p>HTML <span style="float:right;">70%</span></p>
+      <div class="bar"><div class="fill" data-width="70%"></div></div>
+
+      <p>CSS <span style="float:right;">25%</span></p>
+      <div class="bar"><div class="fill" data-width="20%"></div></div>
+
+      <p>JavaScript <span style="float:right;">2%</span></p>
+      <div class="bar"><div class="fill" data-width="0%"></div></div>
+
+      <p>UI Design <span style="float:right;">0%</span></p>
+      <div class="bar"><div class="fill" data-width="0%"></div></div>
+      
+      <p>Godot <span style="float:right;">10%</span></p>
+      <div class="bar"><div class="fill" data-width="0%"></div></div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Addon</h3>
+        <p>Minecraft addon project</p>
+        <a href="minecraft.html" class="btn">View</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p style="margin-bottom: 20px; color:#cbd5e1;">Have a request or question? Send me a message safely:</p>
+
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Justin Gonzaga</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // TYPING ANIMATION
+    const text = "Junior Developer";
+    let i = 0;
+    const speed = 150;
+    const typingElement = document.getElementById("typing");
+
+    function typeWriter() {
+      typingElement.textContent = text.substring(0, i);
+      i++;
+      if (i > text.length) {
+        i = 0;
+        setTimeout(typeWriter, 1000);
+      } else {
+        setTimeout(typeWriter, speed);
+      }
+    }
+    typeWriter();
+
+    // SKILL BAR & ANIMATION ON SCROLL
+    const skills = document.querySelectorAll('.fill');
+    const skillSection = document.getElementById('skills');
+
+    window.addEventListener('scroll', () => {
+      const sectionTop = skillSection.getBoundingClientRect().top;
+      const screenHeight = window.innerHeight;
+
+      if (sectionTop < screenHeight - 50) {
+        skills.forEach(skill => {
+          skill.style.width = skill.getAttribute('data-width');
+        });
+
+        document.getElementById('aboutFooter').classList.add('show');
+
+        document.querySelectorAll('.card').forEach((card, idx) => {
+          setTimeout(() => card.classList.add('show'), idx * 200);
+        });
+      }
+    });
+
+    // SAFE CONTACT FORM USING MAILTO
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      const mailtoLink = `mailto:justingonzaga93@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\n\n' + message)}`;
+      window.location.href = mailtoLink;
+    });
+  </script>
+
+</body>
+</html>

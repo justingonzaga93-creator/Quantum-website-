@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Community</title>
+
+<!-- Google Sign-In -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to bottom right,#0f2027,#203a43,#2c5364);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    margin:0;
+}
+
+.container {
+    text-align:center;
+    background: rgba(0,0,0,0.6);
+    padding:30px;
+    border-radius:20px;
+    max-width:400px;
+    width:100%;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+.community-logo {
+    width:120px;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+h1 {
+    color:#ffcc00;
+}
+
+p {
+    margin-bottom:20px;
+}
+</style>
+</head>
+<body>
+    <div class="discord-section">
+  <h2>Join Our Community</h2>
+  <p>report some problem, get updates,share add-ons and mods and suggest some add-ons here and we ready to listen</p>
+  <a href="https://discord.gg/Nzt2P5Kpy" target="_blank" class="discord-btn">
+    Join Discord 💬
+  </a>
+</div>
+
+<style>
+.discord-section {
+  position: relative;
+  text-align: center;
+  margin: 50px 20px;
+  padding: 30px;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(114, 137, 218, 0.3);
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+/* GLOW BORDER */
+.discord-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  padding: 2px;
+  background: linear-gradient(45deg, #7289da, #ff00ff, #00f7ff);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none; /* ✅ FIX CLICK ISSUE */
+}
+
+.discord-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(114, 137, 218, 0.6);
+}
+
+.discord-section h2 {
+  color: #7289da;
+  font-size: 28px;
+  text-shadow: 0 0 10px rgba(114, 137, 218, 0.8);
+}
+
+.discord-section p {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 16px;
+}
+
+/* BUTTON */
+.discord-btn {
+  position: relative;
+  z-index: 1; /* ✅ ensures it's clickable */
+
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #7289da, #5b6eae);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(114, 137, 218, 0.6);
+}
+
+.discord-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #5b6eae, #7289da);
+  box-shadow: 0 0 25px rgba(114, 137, 218, 1);
+}
+</style>
+    
+</body>
+<script>
+function handleCredentialResponse(response){
+    try {
+        const base64Url = response.credential.split('.')[1];
+        const base64 = base64Url.replace(/-/g,'+').replace(/_/g,'/');
+
+        const jsonPayload = decodeURIComponent(
+            atob(base64).split('').map(c => {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join('')
+        );
+
+        const user = JSON.parse(jsonPayload);
+
+        localStorage.setItem("userName", user.name);
+        localStorage.setItem("userEmail", user.email);
+        localStorage.setItem("userPic", user.picture);
+
+        window.location.href = "community.html";
+
+    } catch(error){
+        console.log(error);
+        alert("Login failed");
+    }
+}
+
+window.onload = function(){
+    google.accounts.id.initialize({
+        client_id: "14252641032-uuh9ba6r8ap47o9aftksv2jqa1ntli5c.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+    });
+
+    google.accounts.id.renderButton(
+        document.getElementById("google-btn"),
+        {
+            theme: "filled_blue",
+            size: "large",
+            width: 250
+        }
+    );
+};
+</script>
+
+</body>
+</html>

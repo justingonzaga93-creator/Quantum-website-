@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum Squad | Minecraft Add-ons</title>
+
+<style>
+:root {
+  --primary: #00ff88;
+  --text: #e0e0e0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0a0a0a,#1a1a2e);
+  color: var(--text);
+}
+
+/* HEADER */
+header {
+  text-align:center;
+  padding:30px;
+  background:black;
+}
+
+header h1 { color: var(--primary); margin-bottom:10px; text-shadow:0 0 8px #00ff88; }
+
+/* NAV */
+.nav {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+}
+
+.btn {
+  padding:10px 18px;
+  background:var(--primary);
+  color:black;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:bold;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.btn:hover {
+  background:#00ffaa;
+  transform:translateY(-2px);
+}
+
+/* CONTAINER */
+.container {
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  text-align:center;
+}
+
+/* GRID */
+.mod-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+/* CARD */
+.mod-card {
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #00ff8844;
+  transition:0.3s;
+}
+
+.mod-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0,255,136,0.2);
+  border-color: var(--primary);
+}
+
+.mod-img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.mod-content {
+  padding:15px;
+  text-align:center;
+}
+
+/* Animated rainbow text for all mod titles */
+.mod-content h3 {
+  font-size:16px;
+  margin-bottom:8px;
+  font-weight:bold;
+  background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 600% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.mod-content p {
+  font-size:14px;
+  color:#bbb;
+  margin-bottom:12px;
+}
+
+.download-btn {
+  display:block;
+  padding:12px;
+  background:var(--primary);
+  border-radius:30px;
+  text-decoration:none;
+  color:black;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.download-btn:hover {
+  background:#00ffaa;
+  transform:scale(1.05);
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Quantum Squad</h1>
+  <div class="nav">
+    <a href="index.html" class="btn">Home</a>
+    <a href="tutorial-page.html" class="btn">How to Install</a>
+    <a href="profile.html" class="btn" id="profile-btn" style="display:none;">Profile</a>
+  </div>
+</header>
+
+<div class="container">
+  <h2>Minecraft Add-ons</h2>
+  <p>Download the best Minecraft Bedrock add-ons.</p>
+
+  <div class="mod-grid">
+
+    <!-- Existing add-ons (kept as they were) -->
+    <div class="mod-card">
+      <img src="images/dynamic-light.jpg" class="mod-img" alt="Dynamic Lights">
+      <div class="mod-content">
+        <h3>Dynamic Lights</h3>
+        <p>Torches and glowing items emit real-time light.</p>
+        <a href="https://www.mediafire.com/file/xy3jex063wleu48/system+dynamic+ligth+v3.2.1.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/betteronbedrock.jpg" class="mod-img" alt="Better on Bedrock">
+      <div class="mod-content">
+        <h3>Better on Bedrock</h3>
+        <p>Improves gameplay mechanics and overall experience.</p>
+        <a href="https://www.mediafire.com/file/hk7f6js7czuyh8w/Better_On_Bedrock.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/betterstructuresaddon.jpg" class="mod-img" alt="Better Structures">
+      <div class="mod-content">
+        <h3>Better Structures</h3>
+        <p>Explore new structures, dungeons, and loot.</p>
+        <a href="https://www.mediafire.com/file/9524vaiceqqr1c8/Better_Structures_Add-on.Mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/bedrock_reimagined.jpg" class="mod-img" alt="Bedrock Reimagined">
+      <div class="mod-content">
+        <h3>Bedrock Reimagined</h3>
+        <p>Visual and gameplay overhaul addon.</p>
+        <a href="https://www.mediafire.com/file/bkfc75lnjuq4hgx/Bedrock_Reimagined_v1.0.7_Refritt2.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/common-sense.jpeg" class="mod-img" alt="Common Sense">
+      <div class="mod-content">
+        <h3>Common Sense</h3>
+        <p>Realistic tweaks and survival improvements.</p>
+        <a href="https://mcpedl.com/jf-common-sense/" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/cropsfarm.jpeg" class="mod-img" alt="Crops Farms">
+      <div class="mod-content">
+        <h3>Crops Farms</h3>
+        <p>Massive farming expansion with crops and systems.</p>
+        <a href="https://www.mediafire.com/file/szg1xclcbkrjjmj/Crops+Farms+1.4.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/More-enchantmets-addon.jpeg" class="mod-img" alt="More Enchantments">
+      <div class="mod-content">
+        <h3>More Enchantments</h3>
+        <p>Powerful new enchantments for gameplay.</p>
+        <a href="https://www.mediafire.com/file/7kwzyragzm230su/More_Enchantments_Add-On_%28addon%29.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+    
+    <div class="mod-card">
+      <img src="images/core-craft.jpg" class="mod-img" alt="Core Craft">
+      <div class="mod-content">
+        <h3>Core Craft</h3>
+        <p>Enhances the game with a vanilla+ RPG-style experience, adding new mobs, structures, quests, items, and improved villages.</p>
+        <a href="http://www.mediafire.com/file/nuyg4c6k4dfoudi/core-craft_1.1.0.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <!-- NEW ADD-ONS -->
+
+    <div class="mod-card">
+      <img src="images/wands.jpg" class="mod-img" alt="Wands">
+      <div class="mod-content">
+        <h3>Wands</h3>
+        <p>Craft powerful magical wands and cast epic spells with different effects.</p>
+        <a href="https://www.mediafire.com/file/b4xzt5lzkxblhuq/WANDS+addon.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/real-mini-blocks.jpg" class="mod-img" alt="Real Mini Blocks">
+      <div class="mod-content">
+        <h3>Real Mini Blocks</h3>
+        <p>Add tiny detailed blocks for ultra-precise building and decoration.</p>
+        <a href="https://www.mediafire.com/file/pbjrrcv5dyu6yof/Real+Miniblocks+Add-On.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/dragons-expansion.jpg" class="mod-img" alt="Dragons Expansion">
+      <div class="mod-content">
+        <h3>Dragons Expansion</h3>
+        <p>Tame, ride, and battle with powerful dragons in your world.</p>
+        <a href="https://www.mediafire.com/file/25sw8bzbb3qntr6/Dragons+Expansion+Add-On.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+
+    <div class="mod-card">
+      <img src="images/gadgets.jpg" class="mod-img" alt="Gadgets">
+      <div class="mod-content">
+        <h3>Gadgets</h3>
+        <p>Handy tools, gadgets, and inventions to make survival and building easier.</p>
+        <a href="https://www.mediafire.com/file/z5hd3laas1hjk31/Gadgets_Add-On.mcaddon/file" class="download-btn">Download</a>
+      </div>
+    </div>
+<!-- ADDED: ACTIONS & STUFF -->
+<div class="mod-card">
+  <img src="actions-and-stuff.png" class="mod-img" alt="Actions & Stuff 1.11">
+  <div class="mod-content">
+    <h3>Actions & Stuff 1.11</h3>
+    <p>A Minecraft Bedrock texture pack with improved animations, models, and visuals.</p>
+    <a href="https://apkzenix.com/id/actions-and-stuff/download/" class="download-btn">Download</a>
+  </div>
+</div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Psycho Squad • All Rights Reserved
+</footer>
+
+<script>
+const userName = localStorage.getItem("userName");
+if(userName){
+  document.getElementById("profile-btn").style.display="inline-block";
+}
+</script>
+
+</body>
+</html>

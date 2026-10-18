@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Install - Add-ons</title>
+
+<style>
+:root {
+  --primary: #00ff88;
+  --secondary: #1a1a2e;
+  --text: #e0e0e0;
+  --accent: #00ffaa;
+  --warning: #ffcc00;
+  --note-bg: rgba(0, 255, 136, 0.1);
+  --note-border: var(--primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+header {
+  text-align: center;
+  padding: 50px 20px 40px;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,255,136,0.15);
+}
+
+.logo {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 25px rgba(0,255,136,0.7));
+}
+
+h1 {
+  font-size: 2.3rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.tutorial-section {
+  background: rgba(26, 26, 26, 0.95);
+  border-radius: 24px;
+  padding: 40px 30px;
+  margin: 40px 0;
+  border: 1px solid rgba(0, 255, 136, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 255, 136, 0.2);
+}
+
+h2 {
+  color: var(--primary);
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 25px 25px 25px 70px;
+  margin-bottom: 20px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 16px;
+  border-left: 6px solid var(--primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.steps li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,255,136,0.2);
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+  color: black;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.steps li strong {
+  color: var(--accent);
+}
+
+.note, .warning {
+  padding: 20px;
+  border-radius: 16px;
+  margin: 30px 0;
+  font-weight: 500;
+}
+
+.note {
+  background: var(--note-bg);
+  border: 1px solid var(--note-border);
+  color: var(--primary);
+}
+
+.warning {
+  background: rgba(255, 204, 0, 0.1);
+  border: 1px solid var(--warning);
+  color: var(--warning);
+}
+
+.final {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 40px 0;
+  color: var(--primary);
+}
+
+button.download-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: var(--primary);
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button.download-btn:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 50px 20px 40px;
+  color: #777;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  .tutorial-section { padding: 30px 20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <img src="images/Logo.jpg" alt="Psycho Squad Logo" class="logo">
+    <h1>How to Install the add-ons</h1>
+    <p class="subtitle">Simple step-by-step guide for Minecraft Bedrock</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="tutorial-section">
+    <h2>Follow these easy steps:</h2>
+
+    <ol class="steps">
+      <li>
+        <strong>Download the mod file</strong> from the main website or shop.<br>
+        <a class="btn" href="Minecraft.html">Download Now</a>
+      </li>
+      <li>Open your <strong>File Manager</strong> on your phone or PC.</li>
+      <li>Locate the downloaded mod file (it usually ends with <strong>.mcaddon</strong> or <strong>.zip</strong>).</li>
+      <li>
+        Tap the three dots (⋮) next to the file and select <strong>Rename</strong>.<br>
+        <strong>Important:</strong> 
+        <ul style="margin-top: 10px; padding-left: 20px;">
+          <li>If the file ends with <strong>.zip</strong>, change it to <strong>.mcpack</strong>.</li>
+          <li>If the file already ends with <strong>.mcaddon</strong>, just remove the <strong>.zip</strong></li>
+        </ul>
+      </li>
+      <li>Tap the file. It should automatically open in <strong>Minecraft</strong>.</li>
+      <li>In Minecraft, go to <strong>Settings → Global Resources</strong> (or Behavior Packs) and activate the mod.</li>
+    </ol>
+
+    <div class="note">
+      💡 <strong>Tip:</strong> Make sure you have the latest version of Minecraft Bedrock Edition installed for best compatibility.
+    </div>
+
+    <div class="warning">
+      ⚠️ <strong>Warning:</strong> Do not rename files incorrectly; Minecraft may not recognize the mod.
+    </div>
+
+    <div class="final">
+      ✅ You're all set!<br>
+      <strong>Enjoy your new mod!</strong> 🎮
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 30px 0;">
+    <p style="opacity: 0.9;">Still having trouble? Feel free to <a href="contact.html" style="color: var(--primary);">contact me</a>.</p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Psycho Squad • All Rights Reserved<br>
+  Made with ❤️ on a mobile device
+</footer>
+
+</body>
+</html>

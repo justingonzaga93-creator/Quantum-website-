@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="screen-orientation"
+        content="landscape"
+    >
+
+    <meta
+        name="orientation"
+        content="landscape"
+    >
+
+    <title>Cube Timer</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="timer-app">
+
+
+        <!-- TOP BAR -->
+
+        <div class="top-bar">
+
+            <div class="logo">
+                CUBE<span> TIMER</span>
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <span class="stat-label">
+                        BEST
+                    </span>
+
+                    <span id="bestTime">
+                        --
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-label">
+                        AVG
+                    </span>
+
+                    <span id="averageTime">
+                        --
+                    </span>
+
+                </div>
+
+
+                <div class="cube">
+                    3×3
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCRAMBLE -->
+
+        <div class="scramble">
+
+            <span id="scrambleText">
+                Ready to scramble
+            </span>
+
+        </div>
+
+
+        <!-- TIMER AREA -->
+
+        <section class="timer-area">
+
+
+            <!-- LEFT HAND -->
+
+            <button
+                class="hand-button left-hand"
+                id="leftHand"
+                type="button"
+                aria-label="Left hand timer button"
+            >
+                LEFT
+            </button>
+
+
+            <!-- CENTER -->
+
+            <div class="timer-center">
+
+                <div id="timer">
+                    0.00
+                </div>
+
+                <div id="status">
+                    HOLD BOTH
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT HAND -->
+
+            <button
+                class="hand-button right-hand"
+                id="rightHand"
+                type="button"
+                aria-label="Right hand timer button"
+            >
+                RIGHT
+            </button>
+
+
+        </section>
+
+
+        <!-- BOTTOM BUTTONS -->
+
+        <div class="bottom-bar">
+
+            <button
+                id="scrambleBtn"
+                type="button"
+            >
+                🔀 Scramble
+            </button>
+
+
+            <button
+                id="historyBtn"
+                type="button"
+            >
+                📜 History
+            </button>
+
+
+            <button
+                id="resetBtn"
+                type="button"
+            >
+                ↻ Reset
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- HISTORY PANEL -->
+
+    <div
+        id="historyPanel"
+        class="history-panel"
+    >
+
+        <div class="history-header">
+
+            <h2>
+                📜 Solve History
+            </h2>
+
+            <button
+                id="closeHistory"
+                type="button"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div
+            id="historyList"
+            class="history-list"
+        >
+
+            <div class="empty-history">
+                No solves yet
+            </div>
+
+        </div>
+
+
+        <button
+            id="clearHistory"
+            class="clear-history"
+            type="button"
+        >
+            🗑 Clear History
+        </button>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
